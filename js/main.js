@@ -646,7 +646,7 @@ if ('IntersectionObserver' in window) {
 // ========================================
 console.log('%c🚀 Hublink - KT 구내통신의 최대 파트너사', 'font-size: 20px; font-weight: bold; color: #1E3A8A;');
 console.log('%c20년 기술력으로 만든, 기업이 신뢰하는 네트워크 인프라', 'font-size: 14px; color: #06B6D4;');
-console.log('%c문의: contact@hublink.kr', 'font-size: 12px; color: #6B7280;');
+console.log('%c문의: jisuk@hublink.kr', 'font-size: 12px; color: #6B7280;');
 
 // ========================================
 // License, Award, Team & Work Photo Lightbox
