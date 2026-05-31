@@ -716,3 +716,25 @@ if (isDebugMode) {
     console.log('%c🔧 Debug Mode Active', 'background: #FCD34D; color: #78350F; padding: 4px 8px; border-radius: 4px;');
     console.log('Current viewport:', window.innerWidth + 'x' + window.innerHeight);
 }
+
+// ============================================================
+// 홈페이지 이메일을 관리자 설정과 동기화 (.js-site-email)
+// ============================================================
+(function () {
+  var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz6bBzHs0YgwopFeIWT5F69kx0Oma1w7MJjR3wjXWawMe6vfWx0I9WoaSUqsnNAfWrFGw/exec';
+  var cb = '__siteCfg_' + Date.now();
+  window[cb] = function (res) {
+    var email = res && res.config && res.config.contactEmail;
+    if (email) {
+      document.querySelectorAll('.js-site-email').forEach(function (el) {
+        el.textContent = email;
+        if (el.tagName === 'A') el.setAttribute('href', 'mailto:' + email);
+      });
+    }
+    var s = document.getElementById(cb); if (s) s.remove(); delete window[cb];
+  };
+  var script = document.createElement('script');
+  script.id = cb;
+  script.src = GAS_ENDPOINT + '?callback=' + cb + '&_=' + Date.now();
+  document.body.appendChild(script);
+})();
